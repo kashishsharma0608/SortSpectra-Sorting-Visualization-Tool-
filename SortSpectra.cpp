@@ -130,54 +130,6 @@ void quickSort(vector<int>& arr, int low, int high) {
         quickSort(arr, pi + 1, high);
     }
 }
-
-void heapify(vector<int>& arr, int n, int i) {
-    int largest = i;
-    int left = 2 * i + 1;
-    int right = 2 * i + 2;
-
-    if (left < n && arr[left] > arr[largest])
-        largest = left;
-
-    if (right < n && arr[right] > arr[largest])
-        largest = right;
-
-    if (largest != i) {
-        swap(arr[i], arr[largest]);
-        visualizeArray(arr);
-        heapify(arr, n, largest);
-    }
-}
-
-void heapSort(vector<int>& arr) {
-    int n = arr.size();
-    for (int i = n / 2 - 1; i >= 0; --i)
-        heapify(arr, n, i);
-
-    for (int i = n - 1; i >= 0; --i) {
-        swap(arr[0], arr[i]);
-        visualizeArray(arr);
-        heapify(arr, i, 0);
-    }
-}
-
-void countingSort(vector<int>& arr) {
-    int maxElement = *max_element(arr.begin(), arr.end());
-    vector<int> count(maxElement + 1, 0);
-
-    for (int num : arr)
-        ++count[num];
-
-    int index = 0;
-    for (int i = 0; i <= maxElement; ++i) {
-        while (count[i]-- > 0) {
-            arr[index++] = i;
-            visualizeArray(arr);
-        }
-    }
-}
-
-
 void getUserInput(vector<int>& arr) {
     cout << GREEN << "Welcome to Sorting Spectra!!" << RESET << endl;
     int size;

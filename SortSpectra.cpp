@@ -1,7 +1,9 @@
 #include <bits/stdc++.h>
 #include <chrono>
 #include <thread>
+
 using namespace std;
+
 const string RED = "\033[31m";
 const string GREEN = "\033[32m";
 const string YELLOW = "\033[33m";
@@ -9,7 +11,6 @@ const string BLUE = "\033[34m";
 const string RESET = "\033[0m";
 
 const int SLEEP_DURATION_MS = 500;
-
 
 void printArray(const vector<int>& arr) {
     for (int num : arr) {
@@ -39,8 +40,7 @@ void bubbleSort(vector<int>& arr) {
                 visualizeArray(arr);
             }
         }
-        if (!swapped)
-            break;
+        if (!swapped) break;
     }
 }
 
@@ -109,6 +109,7 @@ void insertionSort(vector<int>& arr) {
         visualizeArray(arr);
     }
 }
+
 int partition(vector<int>& arr, int low, int high) {
     int pivot = arr[high];
     int i = low - 1;
@@ -130,6 +131,7 @@ void quickSort(vector<int>& arr, int low, int high) {
         quickSort(arr, pi + 1, high);
     }
 }
+
 void getUserInput(vector<int>& arr) {
     cout << GREEN << "Welcome to Sorting Spectra!!" << RESET << endl;
     int size;
@@ -142,11 +144,12 @@ void getUserInput(vector<int>& arr) {
         cin >> arr[i];
     }
 }
+
 void runSortAlgorithm(vector<int>& arr) {
     while (true) {
         int choice;
         vector<int> tempArr = arr;
-    
+
         cout << "\n" << YELLOW << "Choose Sorting Algorithm:" << RESET << endl;
         cout << "-------------------------------------------------------\n";
         cout << "1. Bubble Sort\n";
@@ -154,12 +157,10 @@ void runSortAlgorithm(vector<int>& arr) {
         cout << "3. Selection Sort\n";
         cout << "4. Insertion Sort\n";
         cout << "5. Quick Sort\n";
-        cout << "6. Heap Sort\n";
-        cout << "7. Counting Sort\n";
         cout << "0. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
-    
+
         switch (choice) {
             case 1:
                 bubbleSort(tempArr);
@@ -176,12 +177,6 @@ void runSortAlgorithm(vector<int>& arr) {
             case 5:
                 quickSort(tempArr, 0, tempArr.size() - 1);
                 break;
-            case 6:
-                heapSort(tempArr);
-                break;
-            case 7:
-                countingSort(tempArr);
-                break;
             case 0:
                 cout << GREEN << "Thank you for visiting!" << RESET << endl;
                 return;
@@ -189,10 +184,10 @@ void runSortAlgorithm(vector<int>& arr) {
                 cout << RED << "Invalid choice! Please try again." << RESET << endl;
                 continue;
         }
-    
+
         cout << BLUE << "Sorted Array: " << RESET;
         printArray(tempArr);
-    
+
         char cont;
         cout << "Do you want to sort another array? (y/n): ";
         cin >> cont;
@@ -203,7 +198,6 @@ void runSortAlgorithm(vector<int>& arr) {
         getUserInput(arr);
     }
 }
-
 
 int main() {
     vector<int> arr;
